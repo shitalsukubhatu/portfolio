@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>E-Portfolio | IT Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F8;--surface:#FFFFFF;--ink:#1A2530;--muted:#55646F;--line:#D3DBE2;
+  --accent:#2750D8;--accent-ink:#FFFFFF;--mark:#FFE9B8;--mark-ink:#5A3B00;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1720;--surface:#17212C;--ink:#E7EDF2;--muted:#93A3B0;--line:#2A3846;
+    --accent:#7C9BFF;--accent-ink:#0F1720;--mark:#4A3A14;--mark-ink:#FFE2A3;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1720;--surface:#17212C;--ink:#E7EDF2;--muted:#93A3B0;--line:#2A3846;
+  --accent:#7C9BFF;--accent-ink:#0F1720;--mark:#4A3A14;--mark-ink:#FFE2A3;color-scheme:dark;
+}
+html{scroll-padding-top:20px;scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--body)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.fill{background:var(--mark);color:var(--mark-ink);padding:0 .3em;border-radius:3px}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1100px;margin:0 auto}
+aside{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;padding:40px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px}
+aside .name{font:800 28px/1.1 var(--head);letter-spacing:-.02em;margin:0}
+aside .role{color:var(--muted);font-size:14px;margin:6px 0 0}
+nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav a{display:block;padding:6px 10px;margin-left:-10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:15px}
+nav a:hover{background:var(--surface)}
+nav a[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
+.theme{margin-top:auto;align-self:flex-start;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+main{padding:56px 40px 80px;max-width:760px}
+section{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h1{font:800 clamp(34px,5vw,52px)/1.05 var(--head);letter-spacing:-.03em;margin:0 0 20px}
+h2{font:700 28px/1.15 var(--head);letter-spacing:-.02em;margin:0 0 20px}
+h3{font:700 19px/1.3 var(--head);margin:0 0 6px}
+p{margin:0 0 14px}
+.lead{font-size:18px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:10px 18px;border-radius:6px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:500}
+.btn.alt{background:none;color:var(--ink);border:1px solid var(--line)}
+.skills{display:grid;gap:18px}
+.skills dt{font:700 16px var(--head)}
+.skills dd{margin:2px 0 0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:1px 11px;font-size:13.5px;background:var(--surface)}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;margin-bottom:20px}
+.shot{height:170px;border:1px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--muted);font-size:14px;margin:0 0 18px;text-align:center;padding:10px}
+.project dl{margin:0;display:grid;grid-template-columns:120px 1fr;gap:10px 16px}
+.project dt{font-weight:500;color:var(--muted)}
+.project dd{margin:0}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.list li{display:grid;grid-template-columns:110px 1fr;gap:14px}
+.list time{color:var(--muted);font-size:14px;padding-top:2px}
+.contact{display:grid;gap:6px}
+footer{color:var(--muted);font-size:14px}
+@media (max-width:820px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:24px 20px;gap:14px}
+  nav ul{display:flex;flex-wrap:wrap;gap:4px}
+  nav a{margin-left:0;padding:4px 10px;border:1px solid var(--line)}
+  .theme{margin-top:0}
+  main{padding:32px 20px 60px}
+  .project dl,.list li{grid-template-columns:1fr;gap:2px}
+  .project dd{margin-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div>
+    <p class="name">SHITAL SUKUBHATU</p>
+    <p class="role">MIT Student | Banking Professional | Experienced Graphic Designer | Aspiring IT Professional.</p>
+  </div>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#skills">Technical skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#credentials">Certifications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#innovation">Problem solving</a></li>
+      <li><a href="#contact">Resume and contact</a></li>
+    </ul>
+  </nav>
+  <button class="theme" id="theme" type="button">Switch theme</button>
+</aside>
+
+<main>
+<section id="profile">
+  <h2>Experienced Graphic Designer & Banking Professional | Aspiring Freelancer in Cloud Computing, Cybersecurity & Web Development.</h2>
+  <p>I am a motivated professional currently pursuing a Master of Information Technology (MIT), Second Semester, at Himalayan College of Management, affiliated with KLUST University, with an expected graduation in 2027.</p>
+  <p>I have been working at Nepal SBI Bank since 2016, currently serving in the Alternate Banking Channel Department. Through my experience in the banking sector, I have developed a strong understanding of banking operations, digital banking services, coordination, communication, and technology-driven business processes.</p>
+  <p>In addition to my banking career, I bring over 15 years of professional experience in Graphic Design, working as a freelancer and managing the complete design process, from initial concept development to final delivery. I have extensive experience in book layout, book cover design, publication design, and printing processes. I am skilled at coordinating with different departments, communicating effectively with clients, and transforming creative ideas into visually engaging designs. I enjoy using digital storytelling and innovative design approaches to help brands and publications stand out.</p>
+  <p>By pursuing my MIT degree, I aim to combine my professional experience in banking and creative design with advanced IT knowledge. I am particularly interested in exploring how technology can improve business operations, enhance digital services, and create innovative solutions.</p>
+  
+  <p><b>Career objective.</b> My career objective is to expand my professional capabilities in the IT sector by securing an opportunity in a junior-level IT position or internship where I can contribute to developing and delivering practical technology solutions. I want to work alongside experienced professionals, strengthen my technical skills, learn industry best practices, and gradually take on greater responsibilities.</span> In the long term, I aspire to explore opportunities in technology entrepreneurship, cloud computing, cybersecurity, or other emerging areas of information technology. I aim to combine my experience, creativity, and technical knowledge to develop meaningful solutions and contribute to digital innovation.</p>
+  
+  <p><b>Interests.</b> Outside my academic studies, I enjoy exploring emerging technologies and understanding how they can address real-world challenges. My key areas of interest include: </p>
+  <p><b>1. Cloud Computing: </b>I am interested in learning about cloud platforms, cloud infrastructure, and cloud-based services. I enjoy exploring how organisations use cloud technologies to improve scalability, flexibility, data management, and operational efficiency.</p>
+  <p><b>2. Cybersecurity: </b>I am interested in information security, data protection, network security, and understanding how organisations protect their digital systems against cyber threats. I aim to develop practical knowledge of security principles and best practices.</p>
+  <P><b>3. Technology and Entrepreneurship: </b>I enjoy exploring innovative IT business ideas, digital transformation, and technology-driven entrepreneurship. I am particularly interested in understanding how technology can be transformed into useful products, services, and business opportunities.</P>
+
+  <div class="btns">
+    <a class="btn" href="#projects">See my projects</a>
+    <a class="btn alt" href="#contact">Get my resume</a>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Technical skills</h2>
+  <dl class="skills">
+    <div><dt>Programming</dt><dd>Languages I can build with, and how I have used them.
+      <ul class="tags"><li class="fill">Python</li><li class="fill">JavaScript</li><li class="fill">Java</li><li class="fill">SQL</li></ul></dd></div>
+    <div><dt>Web development</dt><dd>Front end and back end work from my projects.
+      <ul class="tags"><li class="fill">HTML / CSS</li><li class="fill">Laravel</li></ul></dd></div>
+    <div><dt>Databases</dt><dd>Design, queries, and the systems I have used.
+      <ul class="tags"><li class="fill">MySQL</li><li class="fill">PostgreSQL</li></ul></dd></div>
+    <div><dt>Adobe Creative Suite</dt><dd>Designing publications for print and screen, from layout to finished artwork.
+      <ul class="tags"><li class="fill">Photoshop</li><li class="fill">Indesign</li><li class="fill">Illustrator</li><li class="fill">After Effect</li></ul></dd></div>
+    <div><dt>Microsoft Office Suite</dt><dd>Writing documents, working with spreadsheet data, and automating small tasks with macros.
+      <ul class="tags"><li class="fill">MS Word</li><li class="fill">MS Excel</li><li class="fill">MS Visual Basic</li></ul></dd></div>
+  </dl>
+ </section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <article class="project">
+
+          <style>
+      .shot {
+          width: 100%;
+          max-width: 600px;
+          margin: 20px auto;
+          overflow: hidden;
+          border-radius: 10px;
+      }
+
+      .shot img {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+      </style>
+
+      <div class="shot">
+          <img src="img/design1.jpg" alt="Screenshot of Project 1">
+      </div>
+  
+    <h3><span >KOSHILI News Article Design and Layout</span></h3>
+    <p><a href="https://www.facebook.com/100001271848949/videos/pcb.4987611957957816/328136309039566" target="_blank" class="fill">Video Link</a> </p>
+    <dl>
+      <dt>Objective</dt><dd>Designed a professional news article/publication for the Greater Austin Nepal Society (GANS) located on US taxes, highlighting the organization’s past, present, and future plans and programs, as well as showcasing members’ inner talents through poems, stories, and essays.</span></dd>
+      <dt>Technologies</dt><dd>Adobe Photoshop, Adobe Illustrator, Adobe InDesign, and Adobe After Effects.</dd>
+      <dt>Process</dt><dd>GANS supplied the content and materials for the inner pages. I handled the complete design process, including the overall page layouts, visual hierarchy, typography, graphics, and the cover design.</span></dd>
+      <dt>Outcome</dt><dd>Delivered a polished, print-ready news article that was reviewed and approved by the GANS President.</dd>
+    </dl>
+  </article>
+
+  <article class="project">
+
+          <style>
+      .shot {
+          width: 100%;
+          max-width: 600px;
+          margin: 20px auto;
+          overflow: hidden;
+          border-radius: 10px;
+      }
+
+      .shot img {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+      </style>
+
+      <div class="shot">
+          <img src="img/design2.jpg" alt="Screenshot of Project 1">
+      </div>
+  
+    <h3><span >Website Design</span></h3>
+    <p><a href="https://www.facebook.com/100001271848949/videos/pcb.4987611957957816/328136309039566" target="_blank" class="fill">Website Link</a> </p>
+    <dl>
+      <dt>Objective</dt><dd>Designed a professional portfolio website for a graphic designer specializing in book covers and layout design. The primary goal was to showcase past work effectively, strengthen personal branding, and attract potential clients.</span></dd>
+      <dt>Technologies</dt><dd>Adobe XD, HTML/CSS, Adobe Photoshop, WordPress</dd>
+      <dt>Process</dt><dd>Client provided the content and branding guidelines. I handled the complete design and development process, including the overall page layouts, visual hierarchy, typography, and responsive design.</span></dd>
+      <dt>Outcome</dt><dd>Delivered a fine attractive website that effectively showcases the designer's portfolio and strengthens their personal brand.</dd>
+    </dl>
+  </article>
+
+</section>
+
+<section id="credentials">
+  <h2>Certifications and achievements</h2>
+  <h3>Certifications</h3>
+  <ul class="list">
+    <li>2016<div><b>Full Stack Web Development in Laravel</b>, <span>Code IT</span></div></li>
+    <li>2017<div><b>Creative Graphic Designing</b>, <span>Life Computer</span></div></li>
+    <li>2016<div><b>Master in Business Studies</b>, <span>Shanker Dev Campus</span></div></li>
+    <li>2007<div><b>Diploma in Application Programming</b>, <span>College of Software Engineering</span></div></li>
+  <li></li>  
+  </ul>
+ <h3>Achivements</h3>
+  <d1>
+    <dt>•	Awarded by Nepal SBI Bank's MD sir for Designing MD's Cup team logos</dt>
+    <dt>•	Designing Nepal SBI Intouch ATM Card</dt>
+    <dt>•	Designing Nepal SBI BLB Card</dt>
+    <dt>•	Designing Nepal SBI ATM Screens</dt>
+    <dt>•	Nepal SBI Bank Festival Bonanza Advertisement published on National Newspaper</dt>
+    <dt>•	Supporting touch in VISA and MasterCard ATM Debit Cards Design</dt>
+    <dt>•	More than 100 Books covers and layout Designs</dt>
+  
+    </d1>
+
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <d1>
+   <ul>
+    <li>15 years of professional experience in graphic design at Educational Publication House, Kathmandu, and currently working as a freelance graphic designer.</li>
+    <li>10 years of professional experience in the banking sector at Nepal SBI Bank.</li>
+    <li>Practical experience in full-stack web development, including web application design and development.</li>
+  </ul>
+  </d1>
+
+</section>
+
+
+<section id="innovation">
+  <h2>Problem solving and innovation</h2>
+  <p>Developed an MS Excel VBA Macro-based automation solution to simplify and improve the POS merchant transaction settlement process at Nepal SBI Bank.</p>
+  <dl class="project" style="grid-template-columns:120px 1fr">
+    <dt>Problem</dt><dd><span >Previously, POS merchant transaction settlement was performed manually. The process was time-consuming, taking approximately 5–6 hours to complete. Manual calculations and data handling also increased the risk of errors, affecting the efficiency and reliability of the settlement process.</span></dd>
+    <dt>Approach</dt><dd><span >Due to the high cost of purchasing a dedicated settlement application, management decided not to proceed with the proposed software solution. To address this challenge, I independently developed an MS Excel VBA Macro-based automation tool to streamline and automate the settlement process without requiring additional software investment.</span></dd>
+    <dt>Result</dt><dd><span >The automation reduced the POS merchant transaction settlement time from approximately 5–6 hours to less than one hour. It significantly minimized manual work and the possibility of human errors while improving overall operational efficiency and settlement accuracy. Additionally, it provided a cost-effective solution by utilizing existing MS Excel resources without requiring investment in expensive third-party software.</span></dd>
+    <dt>Next step</dt><dd><span >Develop a centralized server-based database and application to further enhance the automation process, improve data management, and support scalability, security, and reporting.</span></dd>
+  </dl>
+</section>
+
+<section id="contact">
+  <h2>Resume and contact</h2>
+  <div class="btns" style="margin:0 0 22px">
+    <a class="btn fill" href="https://docs.google.com/document/d/1TgTrnVC91KA2G6tf3roy215RIk0Br10p/edit?usp=drive_link&ouid=111441907352059134144&rtpof=true&sd=true" target="_blank">Download resume (PDF)</a>
+  </div>
+  <div class="contact">
+    <div>Email: <a href="mailto:shitalsukubhatu@gmail.com" >shitalsukubhatu@gmail.com</a></div>
+    <div>Phone: <span >+977 9841884357</span></div>
+    <div>Location: <span >Bhaktapur, Nepal</span></div>
+  </div>
+</section>
+
+<footer>© <span >Shital Sukubhatu</span>, <span id="yr">2026</span></footer>
+</main>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme',dark?'light':'dark');
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current')});
+          links[secs.indexOf(e.target)].setAttribute('aria-current','true');}
+      });
+    },{rootMargin:'-20% 0px -70% 0px'});
+    secs.forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
